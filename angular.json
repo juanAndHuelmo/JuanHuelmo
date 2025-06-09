@@ -81,12 +81,15 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+"styles": [
+  "src/styles.css",
+  "node_modules/@fortawesome/fontawesome-free/css/all.min.css"]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "36cd36df-8ded-4b8a-9efd-f3620da40323"
   }
 }
