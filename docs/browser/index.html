@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: dark" data-beasties-container>
+  <head>
+    <meta charset="utf-8">
+    <title>Juan Huelmo - Tech</title>
+    <base href="/JuanHuelmo/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+      /* Smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Ensure the WhatsApp image scales correctly */
+      .whatsapp-img {
+        width: 50px; /* Adjust as needed */
+        height: auto;
+      }
+      /* Position the WhatsApp float button */
+      .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25d366;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none; /* Remove underline from link */
+      }
+
+      /* Custom border styling for the main container */
+      .fancy-border-container {
+        position: relative;
+        border: 1px solid #4a5568; /* Tailwind gray-700 equivalent */
+      }
+
+      .fancy-border-corner-top-left {
+        position: absolute;
+        width: 15px; /* Adjusted size */
+        height: 15px; /* Adjusted size */
+        top: -8px; /* Offset to overlap border */
+        left: -8px; /* Offset to overlap border */
+        border-top: 1px solid #a0aec0; /* Tailwind gray-400 equivalent */
+        border-left: 1px solid #a0aec0; /* Tailwind gray-400 equivalent */
+        z-index: 10; /* Ensure it's above the main border */
+      }
+      .fancy-border-corner-bottom-right {
+        position: absolute;
+        width: 15px; /* Adjusted size */
+        height: 15px; /* Adjusted size */
+        bottom: -8px; /* Offset to overlap border */
+        right: -8px; /* Offset to overlap border */
+        border-bottom: 1px solid #a0aec0; /* Tailwind gray-400 equivalent */
+        border-right: 1px solid #a0aec0; /* Tailwind gray-400 equivalent */
+        z-index: 10;
+      }
+
+      /* Responsive adjustments for the corners */
+      @media (min-width: 768px) {
+        .fancy-border-corner-top-left,
+        .fancy-border-corner-bottom-right {
+          width: 25px; /* Larger for md screens */
+          height: 25px; /* Larger for md screens */
+          top: -13px;
+          left: -13px;
+        }
+        .fancy-border-corner-bottom-right {
+          bottom: -13px;
+          right: -13px;
+        }
+      }
+
+      /* Custom background SVG improvements */
+      .bg-grid-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.08; /* Slightly more visible but still subtle */
+        z-index: 0; /* Ensure it's behind content */
+      }
+
+      .bg-grid-pattern svg {
+        width: 100%;
+        height: 100%;
+        min-width: 1080px; /* Ensure it covers even on smaller screens */
+        min-height: 1080px;
+        object-fit: cover; /* Adjusts SVG to cover the area */
+        transform: scale(1.2); /* Slightly scale up to ensure full coverage */
+        transform-origin: center center;
+      }
+    </style>
+  <style>*,:before,:after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / .5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }*,:before,:after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}:before,:after{--tw-content:""}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}h1{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}strong{font-weight:bolder}button{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button{text-transform:none}button{-webkit-appearance:button;background-color:transparent;background-image:none}summary{display:list-item}h1,p{margin:0}ul{list-style:none;margin:0;padding:0}button{cursor:pointer}img,svg{display:block;vertical-align:middle}img{max-width:100%;height:auto}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0}.left-0{left:0}.top-0{top:0}.top-\[70\%\]{top:70%}.z-10{z-index:10}.z-40{z-index:40}.col-span-1{grid-column:span 1 / span 1}.m-\[2px\]{margin:2px}.mx-auto{margin-left:auto;margin-right:auto}.my-12{margin-top:3rem;margin-bottom:3rem}.mb-10{margin-bottom:2.5rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.ml-auto{margin-left:auto}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-14{height:3.5rem}.h-16{height:4rem}.h-40{height:10rem}.h-9{height:2.25rem}.h-full{height:100%}.w-40{width:10rem}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-6xl{max-width:72rem}.max-w-\[480px\]{max-width:480px}.max-w-\[600px\]{max-width:600px}.max-w-max{max-width:max-content}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.list-none{list-style-type:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-row{flex-direction:row}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-0{gap:0px}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-6{gap:1.5rem}.gap-x-8{column-gap:2rem}.gap-y-4{row-gap:1rem}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-md{border-radius:.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-gray-950{--tw-bg-opacity:1;background-color:rgb(3 7 18 / var(--tw-bg-opacity, 1))}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.from-\[\#FF1E56\]{--tw-gradient-from:#FF1E56 var(--tw-gradient-from-position);--tw-gradient-to:rgb(255 30 86 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-\[\#0196FF\]{--tw-gradient-to:#0196FF var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.object-cover{object-fit:cover}.p-1{padding:.25rem}.p-4{padding:1rem}.p-8{padding:2rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-12{padding-bottom:3rem}.pl-2{padding-left:.5rem}.pr-0{padding-right:0}.pr-2{padding-right:.5rem}.text-center{text-align:center}.text-5xl{font-size:3rem;line-height:1}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.tabular-nums{--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tighter{letter-spacing:-.05em}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / .05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / .1), 0 2px 4px -2px rgb(0 0 0 / .1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / .1), 0 8px 10px -6px rgb(0 0 0 / .1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)}.ring-4{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}.ring-blue-500\/50{--tw-ring-color:rgb(59 130 246 / .5)}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-100{transition-duration:.1s}.duration-200{transition-duration:.2s}.whatsapp-float{position:fixed;bottom:20px;right:20px;background-color:#25d366;color:#fff;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:1000;box-shadow:0 4px 12px #0000004d;transition:transform .3s ease;cursor:pointer}.whatsapp-float:hover{transform:scale(1.1);background-color:#1ebe5b}.hover\:bg-gray-700:hover{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.hover\:text-blue-300:hover{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.hover\:text-gray-50:hover{--tw-text-opacity:1;color:rgb(249 250 251 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:underline:hover{text-decoration-line:underline}.hover\:opacity-90:hover{opacity:.9}.focus-visible\:outline-none:focus-visible{outline:2px solid transparent;outline-offset:2px}.focus-visible\:ring-2:focus-visible{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}.focus-visible\:ring-offset-2:focus-visible{--tw-ring-offset-width:2px}.disabled\:pointer-events-none:disabled{pointer-events:none}.disabled\:opacity-50:disabled{opacity:.5}@media (min-width: 640px){.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\:gap-1{gap:.25rem}.sm\:gap-2{gap:.5rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:flex{display:flex}.md\:hidden{display:none}.md\:justify-start{justify-content:flex-start}.md\:p-16{padding:4rem}.md\:px-5{padding-left:1.25rem;padding-right:1.25rem}.md\:px-8{padding-left:2rem;padding-right:2rem}.md\:px-9{padding-left:2.25rem;padding-right:2.25rem}.md\:py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.md\:py-12{padding-top:3rem;padding-bottom:3rem}.md\:py-2{padding-top:.5rem;padding-bottom:.5rem}.md\:pl-6{padding-left:1.5rem}.md\:pr-4{padding-right:1rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:hidden{display:none}.lg\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.lg\:px-12{padding-left:3rem;padding-right:3rem}}@media (prefers-color-scheme: dark){.dark\:bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}}</style><link rel="stylesheet" href="styles-JNJIANXQ.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-JNJIANXQ.css"></noscript></head>
+
+  <body class="bg-gray-900 text-white">
+    <div class="sticky top-0 z-40 flex h-16 justify-between border-b border-gray-700 bg-gray-950 px-4 pr-0 md:pr-4">
+      <div class="flex w-full select-none flex-row items-center">
+        <div class="flex flex-shrink-0 flex-row items-center gap-2"></div>
+        <div class="ml-auto flex md:hidden">
+          <button class="block lg:hidden p-4 pr-2" aria-label="Search">
+            <svg height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 6.5C1.5 3.73858 3.73858 1.5 6.5 1.5C9.26142 1.5 11.5 3.73858 11.5 6.5C11.5 9.26142 9.26142 11.5 6.5 11.5C3.73858 11.5 1.5 9.26142 1.5 6.5ZM6.5 0C2.91015 0 0 2.91015 0 6.5C0 10.0899 2.91015 13 6.5 13C8.02469 13 9.42677 12.475 10.5353 11.596L13.9697 15.0303L14.5 15.5607L15.5607 14.5L15.0303 13.9697L11.596 10.5353C12.475 9.42677 13 8.02469 13 6.5C13 2.91015 10.0899 0 6.5 0Z" fill="currentColor"/>
+            </svg></button><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-«Rkmnd3b»" data-state="closed" class="p-4 pl-2" aria-label="Open navigation menu">
+            <svg height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16" style="color: currentcolor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M1.75 4H1V5.5H1.75H14.25H15V4H14.25H1.75ZM1.75 10.5H1V12H1.75H14.25H15V10.5H14.25H1.75Z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+        <div class="hidden md:flex w-full justify-end md:justify-start md:pl-6">
+          <nav aria-label="Main" data-orientation="horizontal" dir="ltr" class="relative z-10 flex max-w-max flex-1 items-center justify-center">
+            <ul data-orientation="horizontal" class="group flex flex-1 list-none items-center justify-center gap-6 h-14 gap-3" dir="ltr">
+              <li class="h-full">
+                <a class="flex h-full items-center text-sm text-gray-300 transition-colors duration-100 hover:text-gray-50 data-[active=true]:text-gray-50" data-active="false" href="#sobre-mi">Sobre mi</a>
+              </li>
+              <li class="h-full">
+                <a class="flex h-full items-center text-sm text-gray-300 transition-colors duration-100 hover:text-gray-50 data-[active=true]:text-gray-50" data-active="false" href="#skills">Skills</a>
+              </li>
+              <li class="h-full">
+                <a class="flex h-full items-center text-sm text-gray-300 transition-colors duration-100 hover:text-gray-50 data-[active=true]:text-gray-50" data-active="false" href="#experiencia">Experiencia</a>
+              </li>
+              <li class="h-full">
+                <a class="flex h-full items-center text-sm text-gray-300 transition-colors duration-100 hover:text-gray-50 data-[active=true]:text-gray-50" data-active="false" href="#contacto">Contacto</a>
+              </li>
+            </ul>
+            <div class="absolute left-0 top-[70%] flex justify-center"></div>
+          </nav>
+        </div>
+      </div>
+
+      <div class="hidden items-center gap-2 md:flex">
+        <a href="https://www.linkedin.com/in/juan-huelmo/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-gray-700 bg-gray-800 hover:bg-gray-700 hover:text-white text-gray-200 h-9 px-3">
+          Linkedin
+        </a>
+
+        <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-gradient-to-r from-[#FF1E56] to-[#0196FF] text-white hover:opacity-90 h-9 px-3" href="https://github.com/juanhuelmo" target="_blank" rel="noopener noreferrer"><svg class="inline" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16" style="color: currentcolor">
+            <g clip-path="url(#clip0_872_3147)">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.57879 0 7.99729C0 11.5361 2.29 14.5251 5.47 15.5847C5.87 15.6547 6.02 15.4148 6.02 15.2049C6.02 15.0149 6.01 14.3851 6.01 13.7154C4 14.0852 3.48 13.2255 3.32 12.7757C3.23 12.5458 2.84 11.836 2.5 11.6461C2.22 11.4961 1.82 11.1262 2.49 11.1162C3.12 11.1062 3.57 11.696 3.72 11.936C4.44 13.1455 5.59 12.8057 6.05 12.5957C6.12 12.0759 6.33 11.726 6.56 11.5261C4.78 11.3262 2.92 10.6364 2.92 7.57743C2.92 6.70773 3.23 5.98797 3.74 5.42816C3.66 5.22823 3.38 4.40851 3.82 3.30888C3.82 3.30888 4.49 3.09895 6.02 4.1286C6.66 3.94866 7.34 3.85869 8.02 3.85869C8.7 3.85869 9.38 3.94866 10.02 4.1286C11.55 3.08895 12.22 3.30888 12.22 3.30888C12.66 4.40851 12.38 5.22823 12.3 5.42816C12.81 5.98797 13.12 6.69773 13.12 7.57743C13.12 10.6464 11.25 11.3262 9.47 11.5261C9.76 11.776 10.01 12.2558 10.01 13.0056C10.01 14.0752 10 14.9349 10 15.2049C10 15.4148 10.15 15.6647 10.55 15.5847C12.1381 15.0488 13.5182 14.0284 14.4958 12.6673C15.4735 11.3062 15.9996 9.67293 16 7.99729C16 3.57879 12.42 0 8 0Z" fill="currentColor"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_872_3147">
+                <rect width="16" height="16" fill="currentColor"/>
+              </clipPath>
+            </defs></svg><span>GitHub</span></a>
+      </div>
+    </div>
+
+    <div class="py-6 max-w-6xl px-3 sm:px-6 md:py-12 lg:px-12 mx-auto">
+      <div class="grid w-full gap-0 grid-cols-1 relative fancy-border-container">
+        <div class="fancy-border-corner-top-left"></div>
+        <div class="fancy-border-corner-bottom-right"></div>
+
+        <div id="sobre-mi" class="relative col-span-1 md:col-span-2 px-6 py-12 xs:px-6 xs:py-12 md:p-16 bg-gray-950 overflow-hidden">
+          <div class="bg-grid-pattern">
+            <svg fill="none" height="1080" viewBox="0 0 1080 1080" width="1080" xmlns="http://www.w3.org/2000/svg">
+              <g opacity=".15" stroke-dasharray="4 4">
+                <path d="m747.5 3.17647v1076.82353" stroke="#4f71cb"/>
+                <path d="m415.5 3.17647v1076.82353" stroke="#9f4c96"/>
+                <path d="m83.5 3.17647v1076.82353" stroke="#ef2661"/>
+                <path d="m830.5 3.17647v1076.82353" stroke="#3b7bd9"/>
+                <path d="m498.5 3.17647v1076.82353" stroke="#8b56a4"/>
+                <path d="m166.5 3.17647v1076.82353" stroke="#db2f6e"/>
+                <path d="m913.5 3.17647v1076.82353" stroke="#2885e6"/>
+                <path d="m581.5 3.17647v1076.82353" stroke="#775fb1"/>
+                <path d="m249.5 3.17647v1076.82353" stroke="#c8397c"/>
+                <path d="m996.5 3.17647v1076.82353" stroke="#148df3"/>
+                <path d="m664.5 3.17647v1076.82353" stroke="#6368be"/>
+                <path d="m332.5 3.17647v1076.82353" stroke="#b34288"/>
+              </g>
+            </svg>
+          </div>
+          <div class="relative z-10 flex flex-col items-center mt-6">
+            <img src="/juan.jpg" alt="Foto de Juan Huelmo" class="w-40 h-40 rounded-full object-cover mb-4 shadow-lg ring-4 ring-blue-500/50">
+            <h1 class="text-5xl font-extrabold tracking-tighter text-center text-white">
+              Juan Andrés Huelmo
+            </h1>
+            <p class="max-w-[480px] text-center text-gray-400 mt-3 text-xl leading-relaxed">
+              Compartamos ideas 💡, construyamos soluciones 🚀.
+            </p>
+          </div>
+
+          <div class="relative z-10 flex flex-col mt-8 justify-center">
+            <div class="flex justify-center mt-5 mb-10">
+              <div class="relative inline-flex w-full xs:w-auto">
+                <div class="absolute inset-0 rounded-lg xs:rounded-[22px] bg-gradient-to-r from-[#FF1E56] to-[#0196FF] w-full xs:w-auto p-1"></div>
+                <div class="relative text-center rounded-md xs:rounded-[20px] bg-gray-800 dark:bg-gray-900 px-6 py-2 md:px-8 md:py-2 w-full xs:w-auto shadow-xl">
+                  <span class="flex flex-col gap-0 items-center xs:flex-row sm:gap-2 text-base sm:text-2xl leading-tight bg-gradient-to-r from-[#FF1E56] to-[#0196FF] bg-clip-text text-transparent font-bold">
+                    <p class="inline-block tabular-nums">
+                      Analista en Tecnologías de la Información
+                    </p>
+                    <span class="text-white text-lg sm:text-xl">Experiencia en C#, SQL, Angular y HTML.</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <section class="mt-12 text-center">
+              <div class="relative inline-block rounded-md xs:rounded-[20px] m-[2px] bg-gray-800 px-4 py-1.5 md:px-5 md:py-0.5 shadow-md">
+                <span class="flex flex-col gap-0 items-center xs:flex-row sm:gap-1 text-base sm:text-xl leading-tight bg-gradient-to-r from-[#FF1E56] to-[#0196FF] bg-clip-text text-transparent font-semibold">
+                  <p class="inline-block">Mi forma de trabajar</p>
+                </span>
+              </div>
+              <p class="text-gray-400 mt-4 max-w-[600px] mx-auto text-lg leading-relaxed">
+                Me gusta entender el problema antes de pensar en la solución.
+                Escucho, investigo, propongo y siempre busco mejorar el proceso,
+                no solo el resultado. La tecnología me interesa cuando tiene
+                propósito. Me gusta trabajar con autonomía pero colaborar en
+                equipo, y mantener siempre la curiosidad activa.
+              </p>
+            </section>
+            <section class="mt-12 text-center">
+              <div class="relative inline-block rounded-md xs:rounded-[20px] m-[2px] bg-gray-800 px-4 py-1.5 md:px-5 md:py-0.5 shadow-md">
+                <span class="flex flex-col gap-0 items-center xs:flex-row sm:gap-1 text-base sm:text-xl leading-tight bg-gradient-to-r from-[#FF1E56] to-[#0196FF] bg-clip-text text-transparent font-semibold">
+                  <p class="inline-block">Estoy buscando...</p>
+                </span>
+              </div>
+              <p class="text-gray-400 mt-4 max-w-[600px] mx-auto text-lg leading-relaxed">
+                Oportunidades para seguir creciendo como desarrollador,
+                participar en proyectos donde pueda aportar valor con mi
+                experiencia técnica y mi enfoque en procesos, o colaborar en
+                equipos donde se combine diseño, desarrollo y creatividad.
+              </p>
+            </section>
+
+            <section id="skills" class="w-full flex flex-col items-center mt-16 pb-12">
+              <div class="relative inline-block rounded-md xs:rounded-[20px] m-[2px] bg-gray-800 px-4 py-1.5 md:px-5 md:py-0.5 shadow-md mb-8">
+                <span class="flex flex-col gap-0 items-center xs:flex-row sm:gap-1 text-base sm:text-xl leading-tight bg-gradient-to-r from-[#FF1E56] to-[#0196FF] bg-clip-text text-transparent font-semibold">
+                  <p class="inline-block">Tecnologías</p>
+                </span>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-4 gap-x-8 text-gray-300 text-lg sm:text-xl font-medium">
+                <div class="flex items-center gap-2">⚙️ <span>C#</span></div>
+                <div class="flex items-center gap-2">
+                  ⚙️ <span>.NET Core</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  ⚙️ <span>.NET Framework</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  ⚙️ <span>ASP.NET Web Forms MVC</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  🗄️ <span>SQL Server</span>
+                </div>
+                <div class="flex items-center gap-2">🗄️ <span>MySQL</span></div>
+                <div class="flex items-center gap-2">
+                  🧩 <span>Angular</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  🌐 <span>HTML / CSS</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  🎨 <span>Tailwind</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  🔧 <span>.NET Core</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  🧪 <span>Postman</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  🐳 <span>Docker (básico)</span>
+                </div>
+                <div class="flex items-center gap-2">🖥️ <span>Git</span></div>
+                <div class="flex items-center gap-2">
+                  🚀 <span>Node.js (en proceso)</span>
+                </div>
+                <div class="flex items-center gap-2">🎯 <span>Figma</span></div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div id="experiencia" class="col-span-1 md:col-span-2 px-6 py-14 xs:px-6 xs:py-10 md:px-9 lg:px-12 bg-gray-900">
+          <div class="relative inline-block rounded-md xs:rounded-[20px] m-[2px] bg-gray-800 px-4 py-1.5 md:px-5 md:py-0.5 shadow-md mb-8">
+            <span class="flex flex-col gap-0 items-center xs:flex-row sm:gap-1 text-base sm:text-xl leading-tight bg-gradient-to-r from-[#FF1E56] to-[#0196FF] bg-clip-text text-transparent font-semibold">
+              <p class="inline-block">Sobre Mi</p>
+            </span>
+          </div>
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed mt-4">
+            Empecé mi camino en el <strong>diseño industrial textil</strong> en
+            la Universidad de la República (Udelar), donde durante 3 años
+            exploré materiales, procesos y cómo transformar ideas en productos
+            reales. Aprendí a pensar con las manos, diseñar con intención y
+            entender el valor detrás de cada etapa productiva.
+          </p>
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed mt-6">
+            Más adelante, descubrí que esa misma lógica creativa podía aplicarse
+            al <strong>desarrollo de software</strong>: observar, investigar,
+            construir soluciones funcionales y mejorar procesos. Hoy combino la
+            creatividad del diseño con la precisión del código, creando
+            herramientas útiles, claras y enfocadas en la
+            <strong>automatización e industrialización de procesos</strong>.
+          </p>
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed mt-6">
+            Lo mío es una mezcla entre lo técnico y lo sensible. Me gusta
+            trabajar en equipo, construir soluciones concretas y seguir
+            aprendiendo todos los días.
+          </p>
+          <p class="text-lg md:text-xl text-gray-300 leading-relaxed mt-6">
+            Me gradué
+            <strong>Analista en Tecnologías de la Información</strong> en la
+            Universidad ORT Uruguay, donde descubrí mi pasión por unir
+            creatividad y tecnología. Aunque no finalicé la carrera de diseño
+            textil, esa etapa marcó mi forma de pensar procesos, resolver
+            problemas y ver el potencial de las ideas bien ejecutadas. Fue el
+            punto de partida para el camino que hoy sigo desarrollando en el
+            mundo del software.
+          </p>
+          <section class="max-w-3xl mx-auto my-12">
+            <div class="relative inline-block rounded-md xs:rounded-[20px] m-[2px] bg-gray-800 px-4 py-1.5 md:px-5 md:py-0.5 shadow-md mb-8">
+              <span class="flex flex-col gap-0 items-center xs:flex-row sm:gap-1 text-base sm:text-xl leading-tight bg-gradient-to-r from-[#FF1E56] to-[#0196FF] bg-clip-text text-transparent font-semibold">
+                <p class="inline-block">Experiencia Laboral</p>
+              </span>
+            </div>
+            <div class="space-y-4">
+              <details class="border border-gray-700 rounded-lg p-4 bg-gray-800 shadow-md">
+                <summary class="cursor-pointer font-semibold text-lg text-white hover:text-blue-300 transition-colors duration-200">
+                  Italmundo (Verendy S.A.) – Líder en Sistemas
+                  <span class="text-sm text-gray-400">(Nov. 2023 – Feb. 2025)</span>
+                </summary>
+                <ul class="mt-2 list-disc list-inside text-sm text-gray-300">
+                  <li>
+                    Liderazgo del equipo de sistemas, soporte técnico y
+                    asignación de tareas.
+                  </li>
+                  <li>Desarrollo e integración de APIs (REST/SOAP).</li>
+                  <li>
+                    Backend: C#, .NET Core, MVC, MySQL – Frontend: Angular.
+                  </li>
+                  <li>
+                    Administración de bases de datos (MySQL, SQL Server,
+                    MongoDB).
+                  </li>
+                  <li>Automatización de procesos y gestión de proyectos.</li>
+                  <li>Capacitación a nuevos integrantes.</li>
+                </ul>
+              </details>
+
+              <details class="border border-gray-700 rounded-lg p-4 bg-gray-800 shadow-md">
+                <summary class="cursor-pointer font-semibold text-lg text-white hover:text-blue-300 transition-colors duration-200">
+                  Cash S.A. – Analista en Sistemas
+                  <span class="text-sm text-gray-400">(Abr. 2022 – Nov. 2023)</span>
+                </summary>
+                <ul class="mt-2 list-disc list-inside text-sm text-gray-300">
+                  <li>Desarrollo y mantenimiento en C#.NET.</li>
+                  <li>Servicios REST y SOAP, SQL Server.</li>
+                  <li>
+                    Participación en Scrum, colaboración con negocio y soporte.
+                  </li>
+                  <li>
+                    Experiencia fullstack: HTML, CSS, JS, JQuery, ASP.NET.
+                  </li>
+                </ul>
+              </details>
+
+              <details class="border border-gray-700 rounded-lg p-4 bg-gray-800 shadow-md">
+                <summary class="cursor-pointer font-semibold text-lg text-white hover:text-blue-300 transition-colors duration-200">
+                  Balero Software – Desarrollador Fullstack
+                  <span class="text-sm text-gray-400">(May. 2021 – May. 2022)</span>
+                </summary>
+                <ul class="mt-2 list-disc list-inside text-sm text-gray-300">
+                  <li>Desarrollo de funcionalidades y soporte.</li>
+                  <li>Stack: C#, Angular, MySQL, SQL Server.</li>
+                  <li>Primera experiencia formal en desarrollo.</li>
+                </ul>
+              </details>
+
+              <details class="border border-gray-700 rounded-lg p-4 bg-gray-800 shadow-md">
+                <summary class="cursor-pointer font-semibold text-lg text-white hover:text-blue-300 transition-colors duration-200">
+                  Banco de Seguros del Estado – Becario Administrativo
+                  <span class="text-sm text-gray-400">(Dic. 2018 – May. 2021)</span>
+                </summary>
+                <ul class="mt-2 list-disc list-inside text-sm text-gray-300">
+                  <li>Atención al público, tramitación de reclamos.</li>
+                  <li>
+                    Fortalecimiento de competencias administrativas e
+                    institucionales.
+                  </li>
+                </ul>
+              </details>
+
+              <details class="border border-gray-700 rounded-lg p-4 bg-gray-800 shadow-md">
+                <summary class="cursor-pointer font-semibold text-lg text-white hover:text-blue-300 transition-colors duration-200">
+                  Sierra Libre – Auxiliar Administrativo
+                  <span class="text-sm text-gray-400">(Ene. 2015 – Dic. 2018)</span>
+                </summary>
+                <ul class="mt-2 list-disc list-inside text-sm text-gray-300">
+                  <li>Gestión de stock, atención al cliente y cobranza.</li>
+                  <li>Trámites administrativos y gestión web.</li>
+                </ul>
+              </details>
+            </div>
+          </section>
+          <section id="contacto" class="p-8 bg-gray-950 rounded-lg mt-12 shadow-inner">
+            <div class="relative inline-block rounded-md xs:rounded-[20px] m-[2px] bg-gray-800 px-4 py-1.5 md:px-5 md:py-0.5 shadow-md mb-8">
+              <span class="flex flex-col gap-0 items-center xs:flex-row sm:gap-1 text-base sm:text-xl leading-tight bg-gradient-to-r from-[#FF1E56] to-[#0196FF] bg-clip-text text-transparent font-semibold">
+                <p class="inline-block">Contacto</p>
+              </span>
+            </div>
+            <p class="text-lg text-gray-300 leading-relaxed">
+              Podés escribirme a
+              <a href="mailto:huelmojuan96@gmail.com" class="text-blue-400 hover:underline font-semibold">huelmojuan96@gmail</a>.com, también por
+              <a href="https://www.linkedin.com/in/juan-huelmo/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline font-semibold">LinkedIn</a>
+              y
+              <span class="text-blue-400 font-semibold">WhatsApp</span>.
+            </p>
+            <a href="https://wa.me/59891060938" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contact via WhatsApp">
+              <img src="/wpp.png" alt="WhatsApp icon" class="whatsapp-img">
+            </a>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <app-root></app-root>
+  <script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-JM535ACZ.js" type="module"></script></body>
+</html>
